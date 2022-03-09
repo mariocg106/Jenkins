@@ -8,13 +8,12 @@ node {
    }
    stage('test') {
      nodejs(nodeJSInstallationName: 'nodejs17') {
-     //  sh 'npm install --only=dev'
-     //  sh 'npm test'
+     
      }
    }
    stage('Docker Build & Push') {
      docker.withRegistry('https://registry.hub.docker.com', 'docker-hub') {
-   def nuestraapp = docker.build("morgadoberruezo/appnodejs:${gitcommit}", ".")
+   def nuestraapp = docker.build("mariocg106@gmail.com/appnodejs:${gitcommit}", ".")
       nuestraapp.push()   
      }
    }
